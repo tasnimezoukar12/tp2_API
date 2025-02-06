@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Test API</title>
+</head>
+<body>
+    <h2>Test API: Ajouter une personne</h2>
+    <button onclick="ajouterPersonne()">Ajouter Alice</button>
+
+    <script>
+        function ajouterPersonne() {
+            fetch('http://localhost:8000/personnes', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nom: "Alice", adresse: "Paris" })
+            })
+            .then(response => response.json())
+            .then(data => console.log("Réponse API :", data))
+            .catch(error => console.error('Erreur :', error));
+        }
+    </script>
+</body>
+</html>
